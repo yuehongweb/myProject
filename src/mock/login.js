@@ -1,21 +1,15 @@
-let demoList = [{
-    id: 1,
-    name: 'zs',
+let isAuthenticated = {
+    name: 'admin',
     age: '23',
     job: '前端工程师'
-},{
-    id: 2,
-    name: 'ww',
-    age: '24',
-    job: '后端工程师'
-}]
+}
 
 export default {
-'get|/parameter/query':  option => {
+'post|/login':  () => {
 return {
   status: 200,
   message: 'success',
-  data: demoList
+  data: isAuthenticated
 };
 }
 }
