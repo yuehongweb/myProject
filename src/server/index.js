@@ -8,14 +8,15 @@ const Login=(data)=>{
             url:'/login',
             data
         }).then(res=>{
-            let { status } = res.data
-            if( status === 200 ){
+            console.log(res,'serverRes')
+            let { status , data: { code } } = res.data
+            if( status === 200 && code===0 ){
                 resolve(res.data)
             }else{
                 reject(res.data)
             }
         }).catch(err=>{
-            console.log(err);
+            console.log(err,'err');
         })
     })
     

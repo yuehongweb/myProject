@@ -47,9 +47,9 @@ export default {
         if (valid) {
           try {
             Login(this.ruleForm).then(res => {
+               console.log(res,'message');
               let { status ,message ,isAuthenticated } = res;
               if(status===200){
-                  console.log(res,message,'message');
                   this.$message({
                     message: message,
                     type: "success"
@@ -57,13 +57,14 @@ export default {
                     localStorage.setItem('isAuthenticated',isAuthenticated)
                     this.$router.push('/')
               }
-              
+            }).catch(e=>{
+              console.log('登录失败',e)
             })
-          } catch (e) {
-            console.log(e);
+          }catch (e) {
+            console.log(e,'e4444444444');
           }
         } else {
-          console.log("error submit!!");
+          console.log("校验不通过!!");
           return false;
         }
       });
