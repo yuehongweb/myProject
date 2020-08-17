@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Message } from "element-ui";
+import { Message, Loading } from "element-ui";
 
 // 常见的状态码
 const statusMessage = {
@@ -16,23 +16,23 @@ const statusMessage = {
     500: "服务器错误",
     503: "服务暂不可用",
 };
-const POST = ({ url, data, isLoading = true }) => {
+const POST = ({ url, data, isLoading = true, showError = true }) => {
     let loading = null;
     if (isLoading) {
-        loading = this.$loading({
+        loading = Loading.service({
             lock: true,
             text: "Loading",
             spinner: "el-icon-loading",
             background: "rgba(0, 0, 0, 0.7)",
         });
-        console.log(loading,'loading232323')
     }
     return new Promise((resolve, reject) => {
         axios({
             url,
             method: "POST",
             data,
-        }).then((res) => {
+        })
+            .then((res) => {
                 if (res.status === 200) {
                     console.log(res);
                     if (res.data.status === 200) {
@@ -41,24 +41,25 @@ const POST = ({ url, data, isLoading = true }) => {
                     } else {
                         // 业务代码不正确
                         reject(res.data);
-                        Message({
-                            showClose: true,
-                            message: res.data.message,
-                            type: "warning",
-                        });
+                        showError &&
+                            Message({
+                                showClose: true,
+                                message: res.data.message,
+                                type: "warning",
+                            });
                     }
-                    console.log(loading,'loading')
-                    loading&&loading.close();
+                    loading && loading.close();
                 } else {
                     // http 状态码不等于200
                     if (res.status && statusMessage[res.status]) {
                         Message.error(statusMessage[res.status]);
                     }
-                    loading&&loading.close();
+                    loading && loading.close();
                 }
-            }).catch((err) => {
+            })
+            .catch((err) => {
                 reject(err);
-                loading&&loading.close();
+                loading && loading.close();
             });
     });
 };

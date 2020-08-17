@@ -1,0 +1,32 @@
+[
+    {
+        "id":"10000",
+        "name":"首页",
+        "icon":"el-icon-edit-outline",
+        "children":[
+            {"id":"10001","name":"智慧大数据","path":"/index"}
+        ]
+    },
+    {
+        "id":"20000",
+        "name":"校企管理",
+        "icon":"el-icon-folder-opened",
+        "children":[
+            {"id":"20001","name":"学校管理","path":"/schoolManage"},
+            {"id":"20002","name":"单位管理","path":"/merchantManage"},
+            {"id":"20003","name":"监控视频","path":"/monitoringManage"}
+        ]
+    },
+    {
+        "id": "60000",
+        "name": "系统设置",
+        "icon": "el-icon-user",
+        "children": [
+            { "id": "60002", "name": "施工人员管理", "path": "/builder" },
+            { "id": "60003", "name": "机构用户管理", "path": "/organization-list" },
+            { "id": "60005", "name": "用户管理", "path": "/user-manage" },
+            { "id": "60004", "name": "系统日志", "path": "/logger" },
+            { "id": "60006", "name": "预警设置", "path": "/systemSettings" }
+        ]
+    }
+]

@@ -35,25 +35,19 @@ export default {
     methods: {
         // 登录
         submitForm(formName) {
-            this.$refs[formName].validate((valid) => {
+            this.$refs[formName].validate(async (valid) => {
                 if (valid) {
                     try {
-                        Login(this.ruleForm)
-                            .then((res) => {
-                                console.log(res, "message");
-                                let { status, message, isAuthenticated } = res;
-                                if (status === 200) {
-                                    this.$message({
-                                        message: message,
-                                        type: "success",
-                                    });
-                                    localStorage.setItem("isAuthenticated", isAuthenticated);
-                                    this.$router.push("/");
-                                }
-                            })
-                            .catch((e) => {
-                                console.log("登录失败", e);
+                        let res = await Login(this.ruleForm);
+                        let { status, message, isAuthenticated } = res;
+                        if (status === 200) {
+                            this.$message({
+                                message: message,
+                                type: "success",
                             });
+                            localStorage.setItem("isAuthenticated", isAuthenticated);
+                            this.$router.push("/");
+                        }
                     } catch (e) {
                         console.log(e, "e4444444444");
                     }

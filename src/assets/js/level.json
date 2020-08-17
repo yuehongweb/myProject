@@ -1,0 +1,24 @@
+[{
+        "code": 0,
+        "name": "暂无",
+        "alt": "暂无"
+    },
+    {
+        "code": 1,
+        "name": "A",
+        "dynamicImg": "https://samr.shianxin.net/images/common/pic-good.png",
+        "alt": "优秀"
+    },
+    {
+        "code": 2,
+        "name": "B",
+        "dynamicImg": "https://samr.shianxin.net/images/common/pic-normal.png",
+        "alt": "良好"
+    },
+    {
+        "code": 3,
+        "name": "C",
+        "dynamicImg": "https://samr.shianxin.net/images/common/pic-bad.png",
+        "alt": "较差"
+    }
+]
