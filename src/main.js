@@ -4,6 +4,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from '@/router/index.js'
 import '@/styles/index.less'
+import '@/server/axiosInterceptors.js'
 import '@/mock/index.js'
 
 Vue.config.productionTip = false
