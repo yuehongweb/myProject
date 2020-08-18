@@ -4,7 +4,7 @@
         "name":"首页",
         "icon":"el-icon-edit-outline",
         "children":[
-            {"id":"10001","name":"智慧大数据","path":"/index"}
+            {"id":"10001","name":"智慧大数据","path":"/ceshi"}
         ]
     },
     {

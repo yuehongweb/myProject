@@ -39,13 +39,14 @@ export default {
                 if (valid) {
                     try {
                         let res = await Login(this.ruleForm);
-                        let { status, message, isAuthenticated } = res;
+                        let { status, message, data } = res;
                         if (status === 200) {
                             this.$message({
                                 message: message,
                                 type: "success",
                             });
-                            localStorage.setItem("isAuthenticated", isAuthenticated);
+                            localStorage.setItem("isAuthenticated", JSON.stringify(data));
+                            this.$store.dispatch('updateUserInfo',data)
                             this.$router.push("/");
                         }
                     } catch (e) {

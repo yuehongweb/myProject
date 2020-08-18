@@ -1,50 +1,64 @@
 <template>
     <div class="home">
         <el-container>
-            <el-header>Header</el-header>
-            <el-container>
-                <Aside />
-                <el-main>Main</el-main>
-            </el-container>
+            <!-- 侧边栏 -->
+            <Aside />
+            <div class="content">
+                <!-- 头部 -->
+                <Header />
+                <!-- 主体 -->
+                <div class="main">
+                    <keep-alive>
+                        <router-view />
+                    </keep-alive>
+                </div>
+            </div>
         </el-container>
     </div>
 </template>
 
 <script>
-import Aside from './layout/menu.vue'
+import Aside from "./layout/menu.vue";
+import Header from "./layout/header.vue";
 export default {
     name: "Home",
     props: {},
-    components: {Aside},
+    components: { Aside, Header },
     data() {
-        return {};
+        return {
+            // 是否水平折叠收起菜单
+            collapse: false
+        };
     },
     computed: {},
     created() {},
-    mounted() {},
+    mounted() {
+        console.log(this.$store, "this.$store");
+    },
     watch: {},
-    methods: {},
+    methods: {}
 };
 </script>
 
 <style scoped lang="scss">
-$headerHeight: 120px;
+
 .home {
     height: 100vh;
 }
-.el-header {
-    background-color: #b3c0d1;
-    color: #333;
-    text-align: center;
-    line-height: $headerHeight;
-    height: $headerHeight !important;
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
-
+.main {
+    display: block;
+    height: calc(100vh - 120px);
+}
 .el-aside {
     background-color: #d3dce6;
     color: #333;
     text-align: center;
-    height: calc(100vh - 120px);
+    height: 100vh;
 }
 
 .el-main {

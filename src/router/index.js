@@ -2,11 +2,15 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Login from "@/views/login";
 import Home from "@/views/home";
+import Ceshi from "@/views/ceshi";
+
 
 Vue.use(VueRouter);
 const routes = [
   { path: "/login", name: "Login", component: Login },
-  { path: "/", name: "Home", component: Home },
+  { path: "/", name: "Home", component: Home,children:[
+    { path: "/ceshi", name: "Ceshi", component: Ceshi }
+  ] },
 ];
 const router = new VueRouter({
   routes,

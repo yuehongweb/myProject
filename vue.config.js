@@ -17,7 +17,9 @@ module.exports = {
     overlay: {
       warnings: true,
       errors: true
-    }
+    },
+    //如果你的前端应用和后端 API 服务器没有运行在同一个主机上，你需要在开发环境下将 API 请求代理到 API 服务器。这个问题可以通过 vue.config.js 中的 devServer.proxy 选项来配置。
+    // proxy: 'http://192.192.192.92:9101'
   },
   //Type: Object | Function,如果这个值是一个对象，则会通过 webpack-merge 合并到最终的配置中。如果这个值是一个函数，则会接收被解析的配置作为参数。该函数既可以修改配置并不返回任何东西，也可以返回一个被克隆或合并过的配置版本。
   configureWebpack:()=>{
